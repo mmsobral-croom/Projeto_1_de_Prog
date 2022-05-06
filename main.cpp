@@ -2,10 +2,9 @@
 // Created by aluno on 06/05/22.
 //
 
-#include <iostream>
+#include "interface_do_usuario.h"
+#include "processamento.h"
 
-using namespace std;
 
-int main (){
-    cout << "trabalho Lucas e Jamilly" << endl;
+int main () {
 }
