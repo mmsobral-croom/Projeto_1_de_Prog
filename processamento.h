@@ -15,15 +15,23 @@
 using namespace std;
 
 struct cliente{
-    string classe;
-    int prioridade;
-    int senha;
-    string descricao;
+    int horario;
+    string senha;
 };
 
-void cria_listas (int & qtd);
+struct classe {
+    char codigo;
+    int prio;
+    int tempo_limite;
+    string descricao;
+    queue<cliente> fila;
+};
 
-void temporizador ();
+
+void ler_arquivo_inicial();
+
+list<classe>(string & classe);
+
 
 
 #endif //PROJETO_1_DE_PROG_PROCESSAMENTO_H

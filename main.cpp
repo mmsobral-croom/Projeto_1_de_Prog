@@ -7,7 +7,5 @@
 
 
 int main () {
-    int listas;
-    cin >> listas;
-    cria_listas(listas);
+
 }
