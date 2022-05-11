@@ -7,10 +7,7 @@
 
 
 int main () {
-    int opcao;
-    cliente cliente_teste;
-    cin >> opcao;
-    cria_filas(opcao);
-    cin >> cliente_teste.classe;
-    cliente_teste.prioridade = opcao;
+    int listas;
+    cin >> listas;
+    cria_listas(listas);
 }
