@@ -7,5 +7,8 @@
 
 
 int main () {
-
+    list<classe> lista_teste;
+    cria_classes_ordenadas(lista_teste);
+    cout << endl;
+    interface_cliente();
 }
