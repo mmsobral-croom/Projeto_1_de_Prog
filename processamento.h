@@ -41,7 +41,8 @@ bool ordena_em_codigo (const classe & c1, const classe & c2);
 
 void adiciona_cliente_na_fila_certa (string & codigo, list<classe> & filas_de_atendimento);
 
-void retira_cliente();
+void retira_cliente_da_fila(list<classe> & filas_de_clientes);
+
 
 
 #endif //PROJETO_1_DE_PROG_PROCESSAMENTO_H

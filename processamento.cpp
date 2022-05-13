@@ -27,6 +27,7 @@ bool ordena_em_prioridade (const classe & c1, const classe & c2){
     return c1.prio < c2.prio;
 }
 
+//Função que será utilizada para organizar a lista de classes com base no código do cliente (vai ser útil para menu do cliente)
 bool ordena_em_codigo (const classe & c1, const classe & c2){
     return c1.codigo < c2.codigo;
 }
@@ -55,9 +56,7 @@ void cria_classes_ordenadas (const string & csv_file, list<classe> & filas) {
         }
     }
     filas.sort(ordena_em_prioridade);
-    //for(auto & x: filas){
-    //    cout << x.descricao << endl;
-   //
+
 }
 
 //Função que irá adicionar o cliente na sua respectiva fila, dado o código que ofereceu como entrada ao programa
@@ -73,7 +72,7 @@ void adiciona_cliente_na_fila_certa (string & codigo, list<classe> & filas_de_at
                 um_cliente.senha = x.codigo + "00" + to_string(x.fila.size());
             }else if (x.fila.size() >= 10 && x.fila.size() < 100){
                 um_cliente.senha = x.codigo + "0" + to_string(x.fila.size());
-            }else if (x.fila.size()>100){
+            }else if (x.fila.size()>=100){
                 um_cliente.senha = to_string(x.fila.size());
             }
             cout << um_cliente.senha << endl;
@@ -81,4 +80,13 @@ void adiciona_cliente_na_fila_certa (string & codigo, list<classe> & filas_de_at
     }
 }
 
-void retira_cliente();
+void retira_cliente_da_fila(list<classe> & filas_de_clientes) {
+    time_t time0;
+    for (auto &x: filas_de_clientes) {
+        if (x.fila.front().horario > (x.fila.front().horario - time0) / 60) {
+            cout << x.fila.front().senha;
+        } else {
+            cout << x.fila.front().senha;
+        }
+    }
+}
