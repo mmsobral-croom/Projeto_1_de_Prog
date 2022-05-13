@@ -49,6 +49,9 @@ void cria_classes_ordenadas (list<classe> & filas) {
         }
     }
     filas.sort(ordena_em_prioridade);
+    for(auto & x: filas){
+        cout << x.descricao << endl;
+    }
 }
 
 void adiciona_cliente_na_fila_certa(string & codigo){
@@ -60,8 +63,14 @@ void adiciona_cliente_na_fila_certa(string & codigo){
         if(codigo == x.codigo){
             x.fila.push(cliente);
             cliente.horario = time1;
-            cliente.senha = x.codigo + to_string(x.fila.size());
-            cout << cliente.senha;
+            if(x.fila.size()<10){
+                cliente.senha = x.codigo + "00" + to_string(x.fila.size());
+            }else if (x.fila.size() >= 10 && x.fila.size() < 100){
+                cliente.senha = x.codigo + "0" + to_string(x.fila.size());
+            }else if (x.fila.size()>100){
+                cliente.senha = to_string(x.fila.size());
+            }
+            cout << cliente.senha << endl;
         }
     }
 }

@@ -8,9 +8,8 @@
 void interface_cliente(){
     cout << "Selecione o codigo" << endl;
     string codigo;
-    cin >> codigo;
-   // while(true){
-        //if(codigo == "sair") break;
-    adiciona_cliente_na_fila_certa(codigo);
+   while(codigo != "sair"){
+       cin >> codigo;
+       adiciona_cliente_na_fila_certa(codigo);
     }
-//}
+}
