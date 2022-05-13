@@ -8,7 +8,7 @@
 
 int main () {
     list<classe> lista_teste;
-    cria_classes_ordenadas(lista_teste);
+    cria_classes_ordenadas("/home/aluno/CLionProjects/Projeto_1_de_Prog/teste.txt", lista_teste);
     cout << endl;
-    interface_cliente();
+    interface_cliente(lista_teste);
 }

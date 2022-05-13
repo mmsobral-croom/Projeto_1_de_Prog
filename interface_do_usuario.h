@@ -6,11 +6,12 @@
 
 #include <iostream>
 #include <string>
+#include "processamento.h"
 
 using namespace std;
 
 //Cria e implementa interface do cliente
-void interface_cliente();
+void interface_cliente(list<classe> & filas_clientes);
 
 //Cria e implementa interface do atendente
 void interface_atendente ();

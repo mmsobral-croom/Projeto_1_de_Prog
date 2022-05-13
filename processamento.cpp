@@ -22,55 +22,61 @@ void separa(const string & algo, char sep, queue<string> & q) { //Declara a fun�
     }
 }
 
+//Função que será utilizada para organizar a lista de classes com base na prioridade do cliente
 bool ordena_em_prioridade (const classe & c1, const classe & c2){
     return c1.prio < c2.prio;
 }
 
-void cria_classes_ordenadas (list<classe> & filas) {
-    ifstream arq("/home/lucas/CLionProjects/Projeto_1_de_Prog/teste.txt");
+bool ordena_em_codigo (const classe & c1, const classe & c2){
+    return c1.codigo < c2.codigo;
+}
+
+//Função que cria as listas contendo todas as classes declaradas no arquivo CSV, já ordenando-as
+void cria_classes_ordenadas (const string & csv_file, list<classe> & filas) {
+    ifstream arq(csv_file);
     string linha;
     char separador = ',';
     queue<string> parametros_separados;
 
-    classe classe;
+    classe uma_classe;
 
     while(getline(arq,linha)){
         separa(linha,separador,parametros_separados);
         while(!parametros_separados.empty()){
-            classe.codigo = parametros_separados.front();
+            uma_classe.codigo = parametros_separados.front();
             parametros_separados.pop();
-            classe.prio = stoi(parametros_separados.front());
+            uma_classe.prio = stoi(parametros_separados.front());
             parametros_separados.pop();
-            classe.tempo_limite = stoi(parametros_separados.front());
+            uma_classe.tempo_limite = stoi(parametros_separados.front());
             parametros_separados.pop();
-            classe.descricao = parametros_separados.front();
+            uma_classe.descricao = parametros_separados.front();
             parametros_separados.pop();
-            filas.push_back(classe);
+            filas.push_back(uma_classe);
         }
     }
     filas.sort(ordena_em_prioridade);
-    for(auto & x: filas){
-        cout << x.descricao << endl;
-    }
+    //for(auto & x: filas){
+    //    cout << x.descricao << endl;
+   //
 }
 
-void adiciona_cliente_na_fila_certa(string & codigo){
+//Função que irá adicionar o cliente na sua respectiva fila, dado o código que ofereceu como entrada ao programa
+void adiciona_cliente_na_fila_certa (string & codigo, list<classe> & filas_de_atendimento) {
     list<classe> lista_classe;
-    cliente cliente;
-    cria_classes_ordenadas(lista_classe);
+    cliente um_cliente;
     time_t time1;
-    for(auto & x: lista_classe){
+    for(auto & x: filas_de_atendimento){
         if(codigo == x.codigo){
-            x.fila.push(cliente);
-            cliente.horario = time1;
+            x.fila.push(um_cliente);
+            um_cliente.horario = time1;
             if(x.fila.size()<10){
-                cliente.senha = x.codigo + "00" + to_string(x.fila.size());
+                um_cliente.senha = x.codigo + "00" + to_string(x.fila.size());
             }else if (x.fila.size() >= 10 && x.fila.size() < 100){
-                cliente.senha = x.codigo + "0" + to_string(x.fila.size());
+                um_cliente.senha = x.codigo + "0" + to_string(x.fila.size());
             }else if (x.fila.size()>100){
-                cliente.senha = to_string(x.fila.size());
+                um_cliente.senha = to_string(x.fila.size());
             }
-            cout << cliente.senha << endl;
+            cout << um_cliente.senha << endl;
         }
     }
 }

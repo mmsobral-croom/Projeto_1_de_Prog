@@ -12,6 +12,9 @@
 #include <unistd.h>
 #include <fstream>
 #include <time.h>
+#include <ctype.h>
+
+
 
 using namespace std;
 
@@ -21,7 +24,7 @@ struct cliente{
 };
 
 struct classe {
-    basic_string<char> codigo;
+    string codigo;
     int prio;
     int tempo_limite;
     string descricao;
@@ -30,11 +33,13 @@ struct classe {
 
 void separa (const string & algo, char sep, queue<string> & q);
 
-void cria_classes_ordenadas (list<classe> & filas);
+void cria_classes_ordenadas (const string & csv_file, list<classe> & filas);
 
 bool ordena_em_prioridade (const classe & c1, const classe & c2);
 
-void adiciona_cliente_na_fila_certa(string & codigo);
+bool ordena_em_codigo (const classe & c1, const classe & c2);
+
+void adiciona_cliente_na_fila_certa (string & codigo, list<classe> & filas_de_atendimento);
 
 void retira_cliente();
 
