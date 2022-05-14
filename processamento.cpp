@@ -67,15 +67,15 @@ void adiciona_cliente_na_fila_certa (string & codigo, list<classe> & filas_de_at
     //time_t time1;
     for(auto & x: filas_de_atendimento){
         if(codigo == x.codigo){
-            x.fila.push(um_cliente);
             //um_cliente.horario = time1;
-            if(x.fila.size()<10){
-                um_cliente.senha = x.codigo + "00" + to_string(x.fila.size());
-            }else if (x.fila.size() >= 10 && x.fila.size() < 100){
-                um_cliente.senha = x.codigo + "0" + to_string(x.fila.size());
-            }else if (x.fila.size()>=100){
-                um_cliente.senha = to_string(x.fila.size());
+            if(x.fila.size()<9){
+                um_cliente.senha = x.codigo + "00" + to_string(x.fila.size()+1);
+            }else if (x.fila.size() >= 9 && x.fila.size() < 99){
+                um_cliente.senha = x.codigo + "0" + to_string(x.fila.size()+1);
+            }else if (x.fila.size()>=99){
+                um_cliente.senha = to_string(x.fila.size()+1);
             }
+            x.fila.push(um_cliente);
             cout << um_cliente.senha << endl;
         }
     }
