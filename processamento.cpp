@@ -36,6 +36,12 @@ bool ordena_em_codigo (const classe & c1, const classe & c2){
 //Função que cria as listas contendo todas as classes declaradas no arquivo CSV, já ordenando-as
 void cria_classes_ordenadas (const string & csv_file, list<classe> & filas) {
     ifstream arq(csv_file);
+
+    if (!arq.is_open()){
+    cout << "Arquivo Inválido" << endl;
+    return;
+    }
+
     string linha;
     char separador = ',';
     queue<string> parametros_separados;
