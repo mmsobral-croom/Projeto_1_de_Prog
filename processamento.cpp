@@ -1,6 +1,7 @@
 
 
 #include "processamento.h"
+#include "interface_do_usuario.h"
 
 
 void separa(const string & algo, char sep, queue<string> & q) { //Declara a função separa
@@ -63,11 +64,11 @@ void cria_classes_ordenadas (const string & csv_file, list<classe> & filas) {
 void adiciona_cliente_na_fila_certa (string & codigo, list<classe> & filas_de_atendimento) {
     list<classe> lista_classe;
     cliente um_cliente;
-    time_t time1;
+    //time_t time1;
     for(auto & x: filas_de_atendimento){
         if(codigo == x.codigo){
             x.fila.push(um_cliente);
-            um_cliente.horario = time1;
+            //um_cliente.horario = time1;
             if(x.fila.size()<10){
                 um_cliente.senha = x.codigo + "00" + to_string(x.fila.size());
             }else if (x.fila.size() >= 10 && x.fila.size() < 100){
@@ -82,11 +83,18 @@ void adiciona_cliente_na_fila_certa (string & codigo, list<classe> & filas_de_at
 
 void retira_cliente_da_fila(list<classe> & filas_de_clientes) {
     time_t time0;
-    for (auto &x: filas_de_clientes) {
-        if (x.fila.front().horario > (x.fila.front().horario - time0) / 60) {
-            cout << x.fila.front().senha;
-        } else {
-            cout << x.fila.front().senha;
+    filas_de_clientes.sort(ordena_em_codigo);
+
+    auto atual = filas_de_clientes.begin();
+
+    while(atual != filas_de_clientes.end()){
+        if(!atual->fila.empty()){
+            cout << atual->fila.front().senha << endl;
+            atual->fila.pop();
+            interface_atendente(filas_de_clientes);
+            return;
+        }else{
+            atual++;
         }
     }
 }

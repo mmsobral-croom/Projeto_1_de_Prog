@@ -12,3 +12,4 @@ int main () {
     cout << endl;
     menu_inicial(lista_teste);
 }
+
