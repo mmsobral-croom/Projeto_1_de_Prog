@@ -83,7 +83,7 @@ void adiciona_cliente_na_fila_certa (string & codigo, list<classe> & filas_de_at
 
 void retira_cliente_da_fila(list<classe> & filas_de_clientes) {
     time_t time0;
-    filas_de_clientes.sort(ordena_em_codigo);
+    filas_de_clientes.sort(ordena_em_prioridade);
 
     auto atual = filas_de_clientes.begin();
 

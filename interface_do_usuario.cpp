@@ -25,7 +25,7 @@ void interface_cliente(list<classe> & filas_clientes){
            break;
        }
        adiciona_cliente_na_fila_certa(codigo,filas_clientes);
-    }
+   }
 }
 
 void interface_atendente(list<classe> & filas_clientes) {
