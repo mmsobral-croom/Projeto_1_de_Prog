@@ -6,9 +6,9 @@
 #include "processamento.h"
 
 
-int main () {
+int main (int argc, char *argv[]) {
     list<classe> lista_teste;
-    cria_classes_ordenadas("abc", lista_teste);
+    cria_classes_ordenadas(argv[1], lista_teste);
     cout << endl;
     menu_inicial(lista_teste);
 }
