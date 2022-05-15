@@ -11,4 +11,5 @@ int main (int argc, char * argv[]) {
     cria_classes_ordenadas(argv[1], lista_teste);
     cout << endl;
     menu_inicial(lista_teste);
+
 }

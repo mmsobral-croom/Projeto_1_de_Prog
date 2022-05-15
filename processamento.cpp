@@ -70,10 +70,11 @@ void cria_classes_ordenadas (const string & csv_file, list<classe> & filas) {
 void adiciona_cliente_na_fila_certa (string & codigo, list<classe> & filas_de_atendimento) {
     list<classe> lista_classe;
     cliente um_cliente;
-    //time_t time1;
+   // time_t time1;
+   // time1 = time(NULL);
     for(auto & x: filas_de_atendimento){
         if(codigo == x.codigo){
-            //um_cliente.horario = time1;
+          //  um_cliente.horario = time1;
             if(x.fila.size()<9){
                 um_cliente.senha = x.codigo + "00" + to_string(x.fila.size()+1);
             }else if (x.fila.size() >= 9 && x.fila.size() < 99){
@@ -88,19 +89,22 @@ void adiciona_cliente_na_fila_certa (string & codigo, list<classe> & filas_de_at
 }
 
 void retira_cliente_da_fila(list<classe> & filas_de_clientes) {
-    time_t time0;
+    // time_t time0;
+    //time0 = time(NULL);
     filas_de_clientes.sort(ordena_em_prioridade);
 
     auto atual = filas_de_clientes.begin();
     auto fim = filas_de_clientes.end();
     fim--;
 
-    while(atual != filas_de_clientes.end()){
-        if(atual == fim && fim->fila.empty()){
+    while (atual != filas_de_clientes.end()) {
+
+        if (atual == fim && fim->fila.empty()) {
             cout << "As filas estão vazias, retornando ao menu princial..." << endl << endl;
             sleep(3);
             menu_inicial(filas_de_clientes);
-            break;
+            return;
+
         } else {
             if (!atual->fila.empty()) {
                 cout << atual->fila.front().senha << endl << endl;

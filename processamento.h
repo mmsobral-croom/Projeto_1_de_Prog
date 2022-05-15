@@ -51,5 +51,4 @@ void adiciona_cliente_na_fila_certa (string & codigo, list<classe> & filas_de_at
 void retira_cliente_da_fila(list<classe> & filas_de_clientes);
 
 
-
 #endif //PROJETO_1_DE_PROG_PROCESSAMENTO_H

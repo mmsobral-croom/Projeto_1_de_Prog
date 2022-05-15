@@ -7,21 +7,21 @@
 
 void interface_cliente(list<classe> & filas_clientes){
     string codigo;
-    int opcao;
+    char opcao;
 
-    cout << "Selecione o codigo" << endl;
+    cout << "Digite o código de acordo com o serviço:" << endl;
     cout << endl;
 
     filas_clientes.sort(ordena_em_codigo);
 
     for(auto & x: filas_clientes){
-        cout << x.codigo << ":" << x.descricao << endl;
+        cout << x.codigo << ": " << x.descricao << endl;
     }
     cout << endl;
 
-    cout << "Digite SAIR para sair do menu do cliente" << endl;
+    cout << "Você pode sair do menu cliente a qualquer momento digitando  SAIR" << endl;
 
-   while(true){
+    while(true){
        cin >> codigo;
        if(codigo == "SAIR"){
            menu_inicial(filas_clientes);
@@ -29,19 +29,6 @@ void interface_cliente(list<classe> & filas_clientes){
        }
        adiciona_cliente_na_fila_certa(codigo,filas_clientes);
        cout << endl;
-       cout << "Continuar no menu de cliente?" << endl;
-       cout << "1: SIM" << endl;
-       cout << "2: NÃO, Voltar ao Menu principal" << endl;
-       cin >> opcao;
-       cout << endl;
-       if(opcao == 1){
-           cout << "Então digite mais um código" << endl << endl;
-       } else if(opcao == 2) {
-           cout << "Retornando ao menu principal..." << endl << endl;
-           sleep(1);
-           menu_inicial(filas_clientes);
-           break;
-       }
    }
 }
 
