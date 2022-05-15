@@ -92,15 +92,25 @@ void retira_cliente_da_fila(list<classe> & filas_de_clientes) {
     filas_de_clientes.sort(ordena_em_prioridade);
 
     auto atual = filas_de_clientes.begin();
+    auto fim = filas_de_clientes.end();
+    fim--;
 
     while(atual != filas_de_clientes.end()){
-        if(!atual->fila.empty()){
-            cout << atual->fila.front().senha << endl;
-            atual->fila.pop();
-            interface_atendente(filas_de_clientes);
-            return;
-        }else{
-            atual++;
+        if(atual == fim && fim->fila.empty()){
+            cout << "As filas estão vazias, retornando ao menu princial..." << endl << endl;
+            sleep(3);
+            menu_inicial(filas_de_clientes);
+            break;
+        } else {
+            if (!atual->fila.empty()) {
+                cout << atual->fila.front().senha << endl << endl;
+                atual->fila.pop();
+                sleep(1);
+                interface_atendente(filas_de_clientes);
+                return;
+            } else {
+                atual++;
+            }
         }
     }
 }

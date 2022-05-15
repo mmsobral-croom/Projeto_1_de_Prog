@@ -9,10 +9,17 @@
 #include <string>
 #include <queue>
 #include <list>
-#include <unistd.h>
 #include <fstream>
 #include <time.h>
 #include <ctype.h>
+#include <cstring>
+
+#ifdef __linux__
+    #include <unistd.h>
+#elif _WIN32
+    #include <windows.h>
+#endif
+
 
 
 
