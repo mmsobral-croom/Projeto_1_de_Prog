@@ -1,3 +1,4 @@
 A,7,1,Abertura de cadastro
 B,4,10,Encerramento de serviço
 C,1,15,Renovação da fatura
+D,2,12,Negociação Premium

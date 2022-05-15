@@ -16,6 +16,7 @@ void interface_cliente(list<classe> & filas_clientes);
 //Cria e implementa interface do atendente
 void interface_atendente(list<classe> & filas_clientes);
 
+//Apresenta o menu principal para o usuário
 void menu_inicial(list<classe> & filas_clientes);
 
 #endif //PROJETO_1_DE_PROG_INTERFACE_DO_USUARIO_H

@@ -10,6 +10,8 @@ int main (int argc, char * argv[]) {
     list<classe> lista_teste;
     cria_classes_ordenadas(argv[1], lista_teste);
     cout << endl;
-    menu_inicial(lista_teste);
 
+    if(!lista_teste.empty()){
+        menu_inicial(lista_teste);
+    }
 }
