@@ -13,12 +13,16 @@ void interface_cliente(list<classe> & filas_clientes){
 
     filas_clientes.sort(ordena_em_codigo);
 
+    cout << "==========================================================" << endl;
     for(auto & x: filas_clientes){
         cout << x.codigo << ": " << x.descricao << endl;
     }
+    cout << "==========================================================" << endl;
+
     cout << endl;
 
     cout << "Você pode sair do menu cliente a qualquer momento digitando  SAIR" << endl;
+
 
     while(true){
        cin >> codigo;
@@ -35,10 +39,10 @@ void interface_atendente(list<classe> & filas_clientes) {
     string opcao;
 
     cout << "Escolha a opção:" << endl;
-    cout << "====================================================" << endl;
+    cout << "==========================================================" << endl;
     cout << "1: Atender cliente" << endl;
     cout << "2: Sair da interface do atendente" << endl;
-    cout << "====================================================" << endl;
+    cout << "==========================================================" << endl;
 
     cin >> opcao;
     cout << endl;
@@ -77,7 +81,7 @@ void menu_inicial(list<classe> &filas_clientes) {
         interface_atendente(filas_clientes);
         return;
     }else if(opcao == "3"){
-        cout << "============================================" << endl;
+        cout << "==========================================================" << endl;
         cout << "Encerrando aplicação em..." << endl;
         cout << "3" << endl;
         sleep(1);
@@ -86,7 +90,7 @@ void menu_inicial(list<classe> &filas_clientes) {
         cout << "1" << endl;
         sleep(1);
         cout << "Até logo!" << endl;
-        cout << "============================================" << endl;
+        cout << "==========================================================" << endl;
         sleep(1);
         return;
     } else {
