@@ -17,7 +17,7 @@
 #ifdef __linux__
     #include <unistd.h>
 #elif _WIN32
-    #include <windows.h>
+    #include <Windows.h>
 #endif
 
 
