@@ -18,6 +18,7 @@
     #include <unistd.h>
 #elif _WIN32
     #include <Windows.h>
+    #include <unistd.h>
 #endif
 
 
