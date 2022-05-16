@@ -52,18 +52,21 @@ build cmake_object_order_depends_target_Projeto_1_de_Prog: phony || CMakeFiles/P
 build CMakeFiles/Projeto_1_de_Prog.dir/main.cpp.o: CXX_COMPILER__Projeto_1_de_Prog_Debug /home/lucas/CLionProjects/Projeto_1_de_Prog/main.cpp || cmake_object_order_depends_target_Projeto_1_de_Prog
   DEP_FILE = CMakeFiles/Projeto_1_de_Prog.dir/main.cpp.o.d
   FLAGS = -g -std=gnu++11
+  INCLUDES = -I/home/lucas/CLionProjects/Projeto_1_de_Prog/.
   OBJECT_DIR = CMakeFiles/Projeto_1_de_Prog.dir
   OBJECT_FILE_DIR = CMakeFiles/Projeto_1_de_Prog.dir
 
 build CMakeFiles/Projeto_1_de_Prog.dir/interface_do_usuario.cpp.o: CXX_COMPILER__Projeto_1_de_Prog_Debug /home/lucas/CLionProjects/Projeto_1_de_Prog/interface_do_usuario.cpp || cmake_object_order_depends_target_Projeto_1_de_Prog
   DEP_FILE = CMakeFiles/Projeto_1_de_Prog.dir/interface_do_usuario.cpp.o.d
   FLAGS = -g -std=gnu++11
+  INCLUDES = -I/home/lucas/CLionProjects/Projeto_1_de_Prog/.
   OBJECT_DIR = CMakeFiles/Projeto_1_de_Prog.dir
   OBJECT_FILE_DIR = CMakeFiles/Projeto_1_de_Prog.dir
 
 build CMakeFiles/Projeto_1_de_Prog.dir/processamento.cpp.o: CXX_COMPILER__Projeto_1_de_Prog_Debug /home/lucas/CLionProjects/Projeto_1_de_Prog/processamento.cpp || cmake_object_order_depends_target_Projeto_1_de_Prog
   DEP_FILE = CMakeFiles/Projeto_1_de_Prog.dir/processamento.cpp.o.d
   FLAGS = -g -std=gnu++11
+  INCLUDES = -I/home/lucas/CLionProjects/Projeto_1_de_Prog/.
   OBJECT_DIR = CMakeFiles/Projeto_1_de_Prog.dir
   OBJECT_FILE_DIR = CMakeFiles/Projeto_1_de_Prog.dir
 
