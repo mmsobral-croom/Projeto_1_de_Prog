@@ -35,8 +35,10 @@ void interface_atendente(list<classe> & filas_clientes) {
     string opcao;
 
     cout << "Escolha a opção:" << endl;
+    cout << "====================================================" << endl;
     cout << "1: Atender cliente" << endl;
     cout << "2: Sair da interface do atendente" << endl;
+    cout << "====================================================" << endl;
 
     cin >> opcao;
     cout << endl;
@@ -59,11 +61,12 @@ void interface_atendente(list<classe> & filas_clientes) {
 void menu_inicial(list<classe> &filas_clientes) {
     string opcao;
 
-    cout << "Você é cliente ou atendente?" << endl;
+    cout << "Você é cliente ou atendente?" << endl << endl;
+    cout << "==========================================================" << endl;
     cout << "1: Cliente" << endl;
     cout << "2: Atendente" << endl;
     cout << "3: Sair" << endl;
-    cout << endl;
+    cout << "==========================================================" << endl << endl;
 
     cin >> opcao;
 
@@ -74,6 +77,7 @@ void menu_inicial(list<classe> &filas_clientes) {
         interface_atendente(filas_clientes);
         return;
     }else if(opcao == "3"){
+        cout << "============================================" << endl;
         cout << "Encerrando aplicação em..." << endl;
         cout << "3" << endl;
         sleep(1);
@@ -82,6 +86,7 @@ void menu_inicial(list<classe> &filas_clientes) {
         cout << "1" << endl;
         sleep(1);
         cout << "Até logo!" << endl;
+        cout << "============================================" << endl;
         sleep(1);
         return;
     } else {
