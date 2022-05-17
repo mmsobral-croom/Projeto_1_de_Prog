@@ -9,7 +9,6 @@ void interface_cliente(list<classe> & filas_clientes){
 
     cout << "Digite o código de acordo com o serviço:" << endl;
     cout << endl;
-    time_t t1;
 
     filas_clientes.sort(ordena_em_codigo); //Ordena a lista de classes em código para apresentar ao cliente as opções com o código em ordem alfabética
 

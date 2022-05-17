@@ -1,5 +1,3 @@
-
-
 #include "processamento.h"
 #include "interface_do_usuario.h"
 
@@ -36,28 +34,28 @@ bool ordena_em_codigo (const classe & c1, const classe & c2){
 //Função que cria as listas contendo todas as classes declaradas no arquivo CSV, já ordenando-as
 void cria_classes_ordenadas (const string & csv_file, list<classe> & filas) {
     //Variáveis locais da função:
-    classe uma_classe;
     string linha_do_csv;
     char separador = ',';
     queue<string> parametros_separados;
+    classe uma_classe;
 
     //Abertura do arquivo csv passado como parâmetro
     ifstream arq(csv_file);
 
     //Caso o arquivo não tenha sido aberto...
     if (!arq.is_open()){
-    cout << "Arquivo Inválido" << endl;
-    return;
+        cout << "Arquivo Inválido" << endl; //Alerte que o arquivo é inválido
+        return; //Encerra a função
     }
 
     while(getline(arq,linha_do_csv)){ //Enquanto ler uma linha do arquivo csv...
         separa(linha_do_csv,separador,parametros_separados); //Separa as strings da linha e coloque na fila "parâmetros separados"
-        while(!parametros_separados.empty()){ //Enquanto a fila parâmetros separados não estiver vazia...
+        while(!parametros_separados.empty()){
             uma_classe.codigo = parametros_separados.front(); //Adicione o primeiro item como sendo o código da classe
             parametros_separados.pop();
             uma_classe.prio = stoi(parametros_separados.front()); //O segundo item como sendo a prioridade (convertida para um inteiro)
             parametros_separados.pop();
-            uma_classe.tempo_limite = stof(parametros_separados.front()); //O terceiro item como o tempo_limite que o cliente dessa classe deve ficar na fila (convertido para um inteiro)
+            uma_classe.tempo_limite = stoi(parametros_separados.front()); //O terceiro item como o tempo_limite que o cliente dessa classe deve ficar na fila (convertido para um inteiro)
             parametros_separados.pop();
             uma_classe.descricao = parametros_separados.front(); //E o quarto item sendo a descrição da classe
             parametros_separados.pop();
@@ -70,8 +68,7 @@ void cria_classes_ordenadas (const string & csv_file, list<classe> & filas) {
 
 //Função que irá adicionar o cliente na sua respectiva fila, dado o código que ofereceu como entrada ao programa
 void adiciona_cliente_na_fila_certa (string & codigo, list<classe> & filas_de_atendimento) {
-
-    cliente cliente_novo; //Variável local da função
+    cliente cliente_novo;  //Variável local da função
 
     for(auto & x: filas_de_atendimento){ //Para cada classe da fila de atendimento...
         if(codigo == x.codigo){ //Verificar se o código digitado pelo cliente é igual ao código da classe onde o iterador está atualmente
@@ -83,37 +80,37 @@ void adiciona_cliente_na_fila_certa (string & codigo, list<classe> & filas_de_at
                 cliente_novo.senha = to_string(x.fila.size()+1); //Atribuir ao cliente a senha sendo o tamanho da fila + 1
             }
             x.fila.push(cliente_novo); //Colocar o cliente na fila correspondente ao código que escolheu
-            cout << cliente_novo.senha << endl; //Mostrar a senha para o cliente
+            cout << cliente_novo.senha << endl; //Mostra a senha para o cliente
         }
     }
 }
 
-//Função responsável por retirar o cliente da fila quando for chamado pelo atendente
 void retira_cliente_da_fila(list<classe> & filas_de_clientes) {
+
+    filas_de_clientes.sort(ordena_em_prioridade); //Ordena novamente a lista de classes  em prioridade (precisou ser ordenada em código no menu do cliente)
 
     auto atual = filas_de_clientes.begin(); //Cria um iterador para o começo da lista de classes
     auto fim = filas_de_clientes.end(); //Cria um iterador para o fim da lista de classes
     fim--; //Coloca o iterador na última classe dentro da lista de classes
 
-    filas_de_clientes.sort(ordena_em_prioridade); //Ordena novamente a lista de classes  em prioridade (precisou ser ordenada em código no menu do cliente)
 
-        while (atual != filas_de_clientes.end()) { //Enquanto o iterador não estiver no fim da lista
+    while (atual != filas_de_clientes.end()) { //Enquanto o iterador não estiver no fim da lista
 
-            if (atual == fim && fim->fila.empty()) { //Se o iterador estiver na última classe da lista e a fila desta classe estiver vazia, significa que todas as filas estão vazias...
-                cout << "As filas estão vazias, retornando ao menu principal..." << endl << endl; //Então avise que está voltando ao menu inicial
-                sleep(3);
-                menu_inicial(filas_de_clientes); //Volta para o menu inicial da aplicação após 3 segundos
+        if (atual == fim && fim->fila.empty()) { //Se o iterador estiver na última classe da lista e a fila desta classe estiver vazia, significa que todas as filas estão vazias...
+            cout << "As filas estão vazias, retornando ao menu principal..." << endl << endl; //Então avise que está voltando ao menu inicial
+            sleep(3);
+            menu_inicial(filas_de_clientes); //Volta para o menu inicial da aplicação após 3 segundos
+            return; //Encerre a função
+
+        } else { //Caso contrário...
+            if (!atual->fila.empty()) { //Se a fila da classe atual não estiver vazia...
+                cout << "Atendendo: " << atual->fila.front().senha << endl << endl; //Mostre o cliente que está atendendo no momento
+                atual->fila.pop();
+                sleep(1);
+                interface_atendente(filas_de_clientes); //Volte para o menu do atendente após 1 segundo
                 return; //Encerra a função
-
-            } else { //Caso contrário...
-                if (!atual->fila.empty()) { //Se a fila da classe atual não estiver vazia...
-                    cout << "Atendendo: " << atual->fila.front().senha << endl << endl; //Mostre o cliente que está atendendo no momento
-                    atual->fila.pop();
-                    sleep(1);
-                    interface_atendente(filas_de_clientes); //Volte para o menu do atendente após 1 segundo
-                    return;  //Encerra a função
-                } else { //Caso a fila da classe atual esteja vazia, avance para a próxima classe da lista de classes
-                    atual++;
+            } else { //Caso a fila da classe atual esteja vazia, avance para a próxima classe da lista de classes
+                atual++;
             }
         }
     }

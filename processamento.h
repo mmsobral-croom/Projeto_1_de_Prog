@@ -34,7 +34,7 @@ struct cliente{
 struct classe {
     string codigo;
     int prio;
-    float tempo_limite;
+    int tempo_limite;
     string descricao;
     queue<cliente> fila;
 };
